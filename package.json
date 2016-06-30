@@ -1,8 +1,8 @@
 {
-  "name": "unist-find",
+  "name": "unist-util-find",
   "version": "1.0.1",
-  "description": "Unist node finder. Useful for working with remark, rehype and retext.",
-  "repository": "https://github.com/blahah/unist-find",
+  "description": "Unist node finder utility. Useful for working with remark, rehype and retext.",
+  "repository": "https://github.com/blahah/unist-util-find",
   "main": "index.js",
   "scripts": {
     "test": "standard && node test.js"

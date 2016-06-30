@@ -1,11 +1,11 @@
-# unist-find [![Travis](https://img.shields.io/travis/blahah/unist-find.svg)](https://travis-ci.org/blahah/unist-find)
+# unist-find [![Travis](https://img.shields.io/travis/blahah/unist-util-find.svg)](https://travis-ci.org/blahah/unist-util-find)
 
-[Unist](https://github.com/wooorm/unist) node finder. Useful for working with [remark](https://github.com/wooorm/remark), [rehype](https://github.com/wooorm/rehype) and [retext](https://github.com/wooorm/retext).
+[Unist](https://github.com/wooorm/unist) node finder utility. Useful for working with [remark](https://github.com/wooorm/remark), [rehype](https://github.com/wooorm/rehype) and [retext](https://github.com/wooorm/retext).
 
 ## Installation
 
 ```
-npm install --save unist-find
+npm install --save unist-util-find
 ```
 
 ## Usage
@@ -14,7 +14,7 @@ npm install --save unist-find
 
 ```js
 var remark = require('remark')
-var find = require('unist-find')
+var find = require('unist-util-find')
 
 remark()
   .use(function () {
@@ -68,9 +68,7 @@ Result:
 
 ### API
 
-```
-find(node, condition)
-```
+#### `find(node, condition)`
 
 Return the first node that matches `condition`, or `undefined` if no node matches.
 
