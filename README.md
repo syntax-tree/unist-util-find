@@ -1,4 +1,4 @@
-# unist-find [![Travis](https://img.shields.io/travis/blahah/unist-util-find.svg)](https://travis-ci.org/blahah/unist-util-find)
+# unist-util-find [![Travis](https://img.shields.io/travis/blahah/unist-util-find.svg)](https://travis-ci.org/blahah/unist-util-find)
 
 [Unist](https://github.com/wooorm/unist) node finder utility. Useful for working with [remark](https://github.com/wooorm/remark), [rehype](https://github.com/wooorm/rehype) and [retext](https://github.com/wooorm/retext).
 
