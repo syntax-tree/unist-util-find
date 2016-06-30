@@ -74,7 +74,7 @@ find(node, condition)
 
 Return the first node that matches `condition`, or `undefined` if no node matches.
 
-- `node` (`[Node](https://github.com/wooorm/unist#node)`) - Node to search
+- `node` ([`Node`](https://github.com/wooorm/unist#node)) - Node to search
 - `condition` (`string`, `object` or `function`) - Condition used to test each node. Behaviour depends on the type of the condition:
   - `string` finds first node with a truthy property matching `string`
   - `object` finds first node that has matching values for all properties of `object`
