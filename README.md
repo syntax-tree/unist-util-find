@@ -17,17 +17,19 @@ var remark = require('remark')
 var find = require('unist-find')
 
 remark()
-  .use(function (tree) {
-    // string condition
-    console.log(find(tree, 'value'))
+  .use(function () {
+    return function (tree) {
+      // string condition
+      console.log(find(tree, 'value'))
 
-    // object condition
-    console.log(find(tree, { value: 'emphasis' }))
+      // object condition
+      console.log(find(tree, { value: 'emphasis' }))
 
-    // function condition
-    console.log(find(tree, function (node) {
-      return node.type === 'inlineCode'
-    }))
+      // function condition
+      console.log(find(tree, function (node) {
+        return node.type === 'inlineCode'
+      }))
+    }
   })
   .process('Some _emphasis_, **strongness**, and `code`.')
 
@@ -35,15 +37,33 @@ remark()
 
 Result:
 
-```js
+```
 // string condition: 'value'
-{ type: 'text', value: 'Some' }
+{ type: 'text',
+  value: 'Some ',
+  position:
+   Position {
+     start: { line: 1, column: 1, offset: 0 },
+     end: { line: 1, column: 6, offset: 5 },
+     indent: [] } }
 
 // object condition: { value: 'emphasis' }
-{ type: 'text', value: 'emphasis' }
+{ type: 'text',
+  value: 'emphasis',
+  position:
+   Position {
+     start: { line: 1, column: 7, offset: 6 },
+     end: { line: 1, column: 15, offset: 14 },
+     indent: [] } }
 
 // function condition: function (node) { return node.type === 'inlineCode' }
-{ type: 'inlineCode', value: 'code' }
+{ type: 'inlineCode',
+  value: 'code',
+  position:
+   Position {
+     start: { line: 1, column: 38, offset: 37 },
+     end: { line: 1, column: 44, offset: 43 },
+     indent: [] } }
 ```
 
 ### API
