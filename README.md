@@ -31,7 +31,7 @@ remark()
       }))
     }
   })
-  .process('Some _emphasis_, **strongness**, and `code`.')
+  .processSync('Some _emphasis_, **strongness**, and `code`.')
 
 ```
 
