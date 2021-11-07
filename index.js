@@ -5,11 +5,8 @@
  * @module unist:find
  * @fileoverview Unist node finder
  */
-
-'use strict'
-
-var visit = require('unist-util-visit')
-var iteratee = require('lodash.iteratee')
+import { visit } from 'unist-util-visit'
+import iteratee from 'lodash.iteratee'
 
 /**
  * Find
@@ -37,4 +34,4 @@ function find (tree, condition) {
 /*
  * Expose.
  */
-module.exports = find
+export default find
