@@ -1,4 +1,4 @@
-import {remark} from 'remark'
+import { remark } from 'remark'
 import find from './index.js'
 
 remark()

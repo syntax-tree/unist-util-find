@@ -18,8 +18,8 @@ function find (tree, condition) {
   if (!tree) throw new Error('unist-find requires a tree to search')
   if (!condition) throw new Error('unist-find requires a condition')
 
-  var predicate = iteratee(condition)
-  var result
+  const predicate = iteratee(condition)
+  let result
 
   visit(tree, function (node) {
     if (predicate(node)) {
