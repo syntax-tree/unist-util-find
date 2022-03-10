@@ -1,9 +1,9 @@
-var test = require('tape')
-var remark = require('remark')
-var find = require('./index.js')
+import test from 'tape'
+import { remark } from 'remark'
+import find from './index.js'
 
 test('unist-find', function (t) {
-  var tree = remark().parse('Some _emphasis_, **strongness**, and `code`.')
+  const tree = remark().parse('Some _emphasis_, **strongness**, and `code`.')
 
   t.throws(function () {
     find()
@@ -14,7 +14,7 @@ test('unist-find', function (t) {
   }, 'should fail without condition')
 
   t.test('should find with string condition', function (st) {
-    var result = find(tree, 'value')
+    const result = find(tree, 'value')
 
     st.equal(result, tree.children[0].children[0])
 
@@ -22,7 +22,7 @@ test('unist-find', function (t) {
   })
 
   t.test('should find with object condition', function (st) {
-    var result = find(tree, { type: 'emphasis' })
+    const result = find(tree, { type: 'emphasis' })
 
     st.equal(result, tree.children[0].children[1])
 
@@ -30,7 +30,7 @@ test('unist-find', function (t) {
   })
 
   t.test('should find with function condition', function (st) {
-    var result = find(tree, function (node) {
+    const result = find(tree, function (node) {
       return node.type === 'inlineCode'
     })
 
@@ -40,7 +40,7 @@ test('unist-find', function (t) {
   })
 
   t.test('should return undefined if no matches', function (st) {
-    var result = find(tree, 'nope, nope, nope')
+    const result = find(tree, 'nope, nope, nope')
 
     st.equal(result, undefined)
 

@@ -5,11 +5,8 @@
  * @module unist:find
  * @fileoverview Unist node finder
  */
-
-'use strict'
-
-var visit = require('unist-util-visit')
-var iteratee = require('lodash.iteratee')
+import { visit } from 'unist-util-visit'
+import iteratee from 'lodash.iteratee'
 
 /**
  * Find
@@ -21,8 +18,8 @@ function find (tree, condition) {
   if (!tree) throw new Error('unist-find requires a tree to search')
   if (!condition) throw new Error('unist-find requires a condition')
 
-  var predicate = iteratee(condition)
-  var result
+  const predicate = iteratee(condition)
+  let result
 
   visit(tree, function (node) {
     if (predicate(node)) {
@@ -37,4 +34,4 @@ function find (tree, condition) {
 /*
  * Expose.
  */
-module.exports = find
+export default find
