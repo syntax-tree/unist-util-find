@@ -22,7 +22,7 @@ import iteratee from 'lodash.iteratee'
  * Unist node finder utility.
  *
  * @param tree
- *   Node to search
+ *   Node to search.
  * @param condition
  *   Condition used to test each node.
  * @returns
