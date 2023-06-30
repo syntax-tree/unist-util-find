@@ -23,23 +23,26 @@ module.exports = find
 /**
  * Unist node finder utility.
  *
- * @param tree
- *   Node to search.
- * @param condition
- *   Condition used to test each node.
- * @returns
- *   The first node that matches condition, or undefined if no node matches.
- * @type {<V extends Node>(tree: Node, condition: TestStr | TestObj | TestFn) => V | undefined}
+ * @template {Node} V
+ *   Node to search for.
+ * @param {Node} tree
+ *   Tree to search in.
+ * @param {TestStr | TestObj | TestFn} condition
+ *   Condition used to test each node, which matches `V`.
+ * @returns {V | undefined}
+ *   The first node that matches condition, or `undefined` if no node matches.
  */
 function find(tree, condition) {
   if (!tree) throw new Error('unist-util-find requires a tree to search')
   if (!condition) throw new Error('unist-util-find requires a condition')
 
   const predicate = iteratee(condition)
+  /** @type {V | undefined} */
   let result
 
   visit(tree, function (node) {
     if (predicate(node)) {
+      // @ts-expect-error: assume `predicate` checks for `V`.
       result = node
       return false
     }
