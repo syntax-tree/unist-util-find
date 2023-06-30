@@ -1,8 +1,34 @@
 {
   "name": "unist-util-find",
   "version": "1.0.4",
-  "description": "Unist node finder utility. Useful for working with remark, rehype and retext.",
-  "repository": "https://github.com/blahah/unist-util-find",
+  "description": "unist utility to find a node",
+  "license": "MIT",
+  "keywords": [
+    "find",
+    "hast",
+    "mdast",
+    "nlcst",
+    "node",
+    "rehype",
+    "remark",
+    "retext",
+    "search",
+    "unist",
+    "unist-util",
+    "util",
+    "utility"
+  ],
+  "repository": "syntax-tree/unist-util-find",
+  "bugs": "https://github.com/syntax-tree/unist-util-find/issues",
+  "funding": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/unified"
+  },
+  "author": "Richard Smith-Unna <rik@fathomlabs.io> @blahah",
+  "contributors": [
+    "Richard Smith-Unna <rik@fathomlabs.io> @blahah",
+    "Titus Wormer <tituswormer@gmail.com> (https://wooorm.com)"
+  ],
   "sideEffects": false,
   "type": "module",
   "main": "index.js",
@@ -11,27 +37,6 @@
     "index.d.ts",
     "index.js"
   ],
-  "scripts": {
-    "prepack": "npm run build && npm run format",
-    "build": "tsc --build --clean && tsc --build && type-coverage",
-    "format": "prettier . -w --loglevel warn && xo --fix",
-    "test-api": "node --conditions development test.js",
-    "test-coverage": "c8 --100 --reporter lcov npm run test-api",
-    "test": "npm run build && npm run format && npm run test-coverage"
-  },
-  "keywords": [
-    "unist",
-    "remark",
-    "retext",
-    "rehype",
-    "hast",
-    "mdast",
-    "nlcst",
-    "find",
-    "search"
-  ],
-  "author": "Richard Smith-Unna <rik@fathomlabs.io> @blahah",
-  "license": "MIT",
   "dependencies": {
     "lodash.iteratee": "^4.0.0",
     "unist-util-visit": "^4.0.0"
@@ -47,6 +52,14 @@
     "type-coverage": "^2.0.0",
     "typescript": "^5.0.0",
     "xo": "^0.54.0"
+  },
+  "scripts": {
+    "prepack": "npm run build && npm run format",
+    "build": "tsc --build --clean && tsc --build && type-coverage",
+    "format": "prettier . -w --loglevel warn && xo --fix",
+    "test-api": "node --conditions development test.js",
+    "test-coverage": "c8 --100 --reporter lcov npm run test-api",
+    "test": "npm run build && npm run format && npm run test-coverage"
   },
   "prettier": {
     "bracketSpacing": false,
