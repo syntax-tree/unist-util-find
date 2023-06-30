@@ -218,7 +218,7 @@ abide by its terms.
 
 ## License
 
-[MIT][license] © [Titus Wormer][author]
+[MIT][license] © [Richard Smith-Unna][author]
 
 <!-- Definition -->
 
@@ -252,7 +252,7 @@ abide by its terms.
 
 [license]: license
 
-[author]: https://wooorm.com
+[author]: https://twitter.com/blahah404
 
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 
