@@ -1,6 +1,6 @@
-var test = require('tape')
-var remark = require('remark')
-var find = require('./index.js')
+const test = require('tape')
+const remark = require('remark')
+const find = require('./index.js')
 
 test('unist-find', function (t) {
   const tree = remark().parse('Some _emphasis_, **strongness**, and `code`.')
@@ -22,7 +22,7 @@ test('unist-find', function (t) {
   })
 
   t.test('should find with object condition', function (st) {
-    const result = find(tree, { type: 'emphasis' })
+    const result = find(tree, {type: 'emphasis'})
 
     st.equal(result, tree.children[0].children[1])
 
