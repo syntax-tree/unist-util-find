@@ -15,10 +15,8 @@
  *   Finds first node for which function returns true when passed node as argument.
  */
 
-const visit = require('unist-util-visit')
-const iteratee = require('lodash.iteratee')
-
-module.exports = find
+import visit from 'unist-util-visit'
+import iteratee from 'lodash.iteratee'
 
 /**
  * Unist node finder utility.
@@ -32,7 +30,7 @@ module.exports = find
  * @returns {V | undefined}
  *   The first node that matches condition, or `undefined` if no node matches.
  */
-function find(tree, condition) {
+export function find(tree, condition) {
   if (!tree) throw new Error('unist-util-find requires a tree to search')
   if (!condition) throw new Error('unist-util-find requires a condition')
 

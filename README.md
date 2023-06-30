@@ -13,8 +13,8 @@ npm install --save unist-util-find
 ### Example
 
 ```js
-var remark = require('remark')
-var find = require('unist-util-find')
+import {remark} from 'remark'
+import {find} from 'unist-util-find'
 
 remark()
   .use(function () {

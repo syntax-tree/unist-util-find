@@ -2,10 +2,10 @@
  * @typedef {import('mdast').Root} Root
  */
 
-const assert = require('node:assert/strict')
-const test = require('tape')
-const remark = require('remark')
-const find = require('./index.js')
+import assert from 'node:assert/strict'
+import test from 'tape'
+import remark from 'remark'
+import {find} from './index.js'
 
 test('unist-find', function (t) {
   const tree = /** @type {Root} */ (
