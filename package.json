@@ -16,9 +16,6 @@
     "prepare": "npm run build",
     "release": "release-it"
   },
-  "engines": {
-    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
-  },
   "type": "commonjs",
   "keywords": [
     "unist",
