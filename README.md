@@ -1,30 +1,82 @@
-# unist-util-find [![Travis](https://img.shields.io/travis/blahah/unist-util-find.svg)](https://travis-ci.org/blahah/unist-util-find)
+# unist-util-find
 
-[Unist](https://github.com/wooorm/unist) node finder utility. Useful for working with [remark](https://github.com/wooorm/remark), [rehype](https://github.com/wooorm/rehype) and [retext](https://github.com/wooorm/retext).
+[![Build][build-badge]][build]
+[![Coverage][coverage-badge]][coverage]
+[![Downloads][downloads-badge]][downloads]
+[![Size][size-badge]][size]
+[![Sponsors][sponsors-badge]][collective]
+[![Backers][backers-badge]][collective]
+[![Chat][chat-badge]][chat]
 
-## Installation
+[unist][] utility to find a node.
 
+## Contents
+
+*   [What is this?](#what-is-this)
+*   [When should I use this?](#when-should-i-use-this)
+*   [Install](#install)
+*   [Use](#use)
+*   [API](#api)
+    *   [`find(tree, condition)`](#findtree-condition)
+    *   [`TestFn`](#testfn)
+    *   [`TestObj`](#testobj)
+    *   [`TestStr`](#teststr)
+*   [Types](#types)
+*   [Compatibility](#compatibility)
+*   [Security](#security)
+*   [Related](#related)
+*   [Contribute](#contribute)
+*   [License](#license)
+
+## What is this?
+
+This package is a utility that takes any [unist][] (whether mdast, hast, etc)
+node and returns the first node that matches a given condition.
+
+## When should I use this?
+
+This utility is the simplest way to find a single node in a tree.
+
+For much more powerful tree walking, see [`unist-util-visit`][visit].
+
+## Install
+
+This package is [ESM only][esm].
+In Node.js (version 16+), install with [npm][]:
+
+```sh
+npm install unist-util-find
 ```
-npm install --save unist-util-find
+
+In Deno with [`esm.sh`][esmsh]:
+
+```js
+import {find} from 'https://esm.sh/unist-util-find@1'
 ```
 
-## Usage
+In browsers with [`esm.sh`][esmsh]:
 
-### Example
+```html
+<script type="module">
+  import {find} from 'https://esm.sh/unist-util-find@1?bundle'
+</script>
+```
+
+## Use
 
 ```js
 import {fromMarkdown} from 'mdast-util-from-markdown'
-import {find} from './index.js'
+import {find} from 'unist-util-find'
 
 const tree = fromMarkdown('Some _emphasis_, **strongness**, and `code`.')
 
-// String condition
+// String condition:
 console.log(find(tree, 'value'))
 
-// Object condition
+// Object condition:
 console.log(find(tree, {value: 'emphasis'}))
 
-// Function condition
+// Function condition:
 console.log(
   find(tree, function (node) {
     return node.type === 'inlineCode'
@@ -32,9 +84,9 @@ console.log(
 )
 ```
 
-Result:
+Yields:
 
-```
+```js
 // string condition: 'value'
 {
   type: 'text',
@@ -66,18 +118,164 @@ Result:
 }
 ```
 
-### API
+## API
 
-#### `find(node, condition)`
+This package exports the identifier [`find`][api-find].
+There is no default export.
 
-Return the first node that matches `condition`, or `undefined` if no node matches.
+### `find(tree, condition)`
 
-- `node` ([`Node`](https://github.com/wooorm/unist#node)) - Node to search
-- `condition` (`string`, `object` or `function`) - Condition used to test each node. Behaviour depends on the type of the condition:
-  - `string` finds first node with a truthy property matching `string`
-  - `object` finds first node that has matching values for all properties of `object`
-  - `function` finds first node for which `function` returns true when passed `node` as argument
+Find a node in `tree` matching `condition`.
+
+###### Parameters
+
+*   `tree` ([`Node`][node])
+    — tree to search in
+*   `condition` ([`TestFn`][api-test-fn], [`TestObj`][api-test-obj], or
+    [`TestStr`][api-test-str])
+    — condition used to test each node
+
+###### Returns
+
+The first node ([`Node`][node]) that matches condition, or `undefined` if no
+node matches
+
+### `TestFn`
+
+Find the first node for which function returns `true` when passed node as
+argument (TypeScript type).
+
+###### Parameters
+
+*   `node` ([`Node`][node])
+    — node to check
+
+###### Returns
+
+Whether `node` matches your condition (`boolean`).
+
+### `TestObj`
+
+Find the first node that has matching values for all properties of object
+(TypeScript type).
+
+###### Type
+
+```ts
+type TestObj = Record<string, unknown>;
+```
+
+### `TestStr`
+
+Find the first node with a truthy property matching `string` (TypeScript type).
+
+###### Type
+
+```ts
+type TestStr = string;
+```
+
+## Types
+
+This package is fully typed with [TypeScript][].
+It exports the additional types [`TestFn`][api-test-fn],
+[`TestObj`][api-test-obj], and [`TestStr`][api-test-str].
+
+## Compatibility
+
+Projects maintained by the unified collective are compatible with maintained
+versions of Node.js.
+
+When we cut a new major release, we drop support for unmaintained versions of
+Node.
+This means we try to keep the current release line,
+`unist-util-find@^1`, compatible with Node.js 12.
+
+## Security
+
+This project is safe.
+
+## Related
+
+*   [`unist-util-generated`](https://github.com/syntax-tree/unist-util-generated)
+    — check if a node is generated
+*   [`unist-util-position`](https://github.com/syntax-tree/unist-util-position)
+    — get positional info of nodes
+*   [`unist-util-remove-position`](https://github.com/syntax-tree/unist-util-remove-position)
+    — remove positional info from trees
+*   [`unist-util-source`](https://github.com/syntax-tree/unist-util-source)
+    — get the source of a value (node or position) in a file
+
+## Contribute
+
+See [`contributing.md` in `syntax-tree/.github`][contributing] for ways to get
+started.
+See [`support.md`][support] for ways to get help.
+
+This project has a [code of conduct][coc].
+By interacting with this repository, organization, or community you agree to
+abide by its terms.
 
 ## License
 
-MIT
+[MIT][license] © [Titus Wormer][author]
+
+<!-- Definition -->
+
+[build-badge]: https://github.com/syntax-tree/unist-util-find/workflows/main/badge.svg
+
+[build]: https://github.com/syntax-tree/unist-util-find/actions
+
+[coverage-badge]: https://img.shields.io/codecov/c/github/syntax-tree/unist-util-find.svg
+
+[coverage]: https://codecov.io/github/syntax-tree/unist-util-find
+
+[downloads-badge]: https://img.shields.io/npm/dm/unist-util-find.svg
+
+[downloads]: https://www.npmjs.com/package/unist-util-find
+
+[size-badge]: https://img.shields.io/badge/dynamic/json?label=minzipped%20size&query=$.size.compressedSize&url=https://deno.bundlejs.com/?q=unist-util-find
+
+[size]: https://bundlejs.com/?q=unist-util-find
+
+[sponsors-badge]: https://opencollective.com/unified/sponsors/badge.svg
+
+[backers-badge]: https://opencollective.com/unified/backers/badge.svg
+
+[collective]: https://opencollective.com/unified
+
+[chat-badge]: https://img.shields.io/badge/chat-discussions-success.svg
+
+[chat]: https://github.com/syntax-tree/unist/discussions
+
+[npm]: https://docs.npmjs.com/cli/install
+
+[license]: license
+
+[author]: https://wooorm.com
+
+[esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
+
+[esmsh]: https://esm.sh
+
+[typescript]: https://www.typescriptlang.org
+
+[contributing]: https://github.com/syntax-tree/.github/blob/main/contributing.md
+
+[support]: https://github.com/syntax-tree/.github/blob/main/support.md
+
+[coc]: https://github.com/syntax-tree/.github/blob/main/code-of-conduct.md
+
+[unist]: https://github.com/syntax-tree/unist
+
+[visit]: https://github.com/syntax-tree/unist-util-visit
+
+[node]: https://github.com/syntax-tree/unist#node
+
+[api-find]: #findtree-condition
+
+[api-test-fn]: #testfn
+
+[api-test-obj]: #testobj
+
+[api-test-str]: #teststr
