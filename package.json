@@ -31,21 +31,20 @@
   ],
   "author": "Richard Smith-Unna <rik@fathomlabs.io> @blahah",
   "license": "MIT",
+  "dependencies": {
+    "lodash.iteratee": "^4.0.0",
+    "unist-util-visit": "^4.0.0"
+  },
   "devDependencies": {
-    "@types/lodash.iteratee": "^4.7.7",
-    "@types/mdast": "^3.0.0",
+    "@types/lodash.iteratee": "^4.0.0",
     "@types/tape": "^5.0.0",
     "@types/unist": "^2.0.6",
+    "mdast-util-from-markdown": "^1.0.0",
     "prettier": "^2.0.0",
-    "remark": "^13.0.0",
-    "tape": "^5.3.1",
+    "tape": "^5.0.0",
     "type-coverage": "^2.0.0",
     "typescript": "^5.0.0",
     "xo": "^0.54.0"
-  },
-  "dependencies": {
-    "lodash.iteratee": "^4.7.0",
-    "unist-util-visit": "^2.0.0"
   },
   "prettier": {
     "bracketSpacing": false,

@@ -13,57 +13,57 @@ npm install --save unist-util-find
 ### Example
 
 ```js
-import {remark} from 'remark'
-import {find} from 'unist-util-find'
+import {fromMarkdown} from 'mdast-util-from-markdown'
+import {find} from './index.js'
 
-remark()
-  .use(function () {
-    return function (tree) {
-      // string condition
-      console.log(find(tree, 'value'))
+const tree = fromMarkdown('Some _emphasis_, **strongness**, and `code`.')
 
-      // object condition
-      console.log(find(tree, { value: 'emphasis' }))
+// String condition
+console.log(find(tree, 'value'))
 
-      // function condition
-      console.log(find(tree, function (node) {
-        return node.type === 'inlineCode'
-      }))
-    }
+// Object condition
+console.log(find(tree, {value: 'emphasis'}))
+
+// Function condition
+console.log(
+  find(tree, function (node) {
+    return node.type === 'inlineCode'
   })
-  .processSync('Some _emphasis_, **strongness**, and `code`.')
-
+)
 ```
 
 Result:
 
 ```
 // string condition: 'value'
-{ type: 'text',
+{
+  type: 'text',
   value: 'Some ',
-  position:
-   Position {
-     start: { line: 1, column: 1, offset: 0 },
-     end: { line: 1, column: 6, offset: 5 },
-     indent: [] } }
+  position: {
+    start: { line: 1, column: 1, offset: 0 },
+    end: { line: 1, column: 6, offset: 5 }
+  }
+}
 
 // object condition: { value: 'emphasis' }
-{ type: 'text',
+{
+  type: 'text',
   value: 'emphasis',
-  position:
-   Position {
-     start: { line: 1, column: 7, offset: 6 },
-     end: { line: 1, column: 15, offset: 14 },
-     indent: [] } }
+  position: {
+    start: { line: 1, column: 7, offset: 6 },
+    end: { line: 1, column: 15, offset: 14 }
+  }
+}
 
 // function condition: function (node) { return node.type === 'inlineCode' }
-{ type: 'inlineCode',
+{
+  type: 'inlineCode',
   value: 'code',
-  position:
-   Position {
-     start: { line: 1, column: 38, offset: 37 },
-     end: { line: 1, column: 44, offset: 43 },
-     indent: [] } }
+  position: {
+    start: { line: 1, column: 38, offset: 37 },
+    end: { line: 1, column: 44, offset: 43 }
+  }
+}
 ```
 
 ### API

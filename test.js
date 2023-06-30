@@ -1,16 +1,10 @@
-/**
- * @typedef {import('mdast').Root} Root
- */
-
 import assert from 'node:assert/strict'
 import test from 'tape'
-import remark from 'remark'
+import {fromMarkdown} from 'mdast-util-from-markdown'
 import {find} from './index.js'
 
 test('unist-find', function (t) {
-  const tree = /** @type {Root} */ (
-    remark().parse('Some _emphasis_, **strongness**, and `code`.')
-  )
+  const tree = fromMarkdown('Some _emphasis_, **strongness**, and `code`.')
   assert(tree.type === 'root')
   const paragraph = tree.children[0]
   assert(paragraph.type === 'paragraph')

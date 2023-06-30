@@ -15,7 +15,7 @@
  *   Finds first node for which function returns true when passed node as argument.
  */
 
-import visit from 'unist-util-visit'
+import {visit} from 'unist-util-visit'
 import iteratee from 'lodash.iteratee'
 
 /**
