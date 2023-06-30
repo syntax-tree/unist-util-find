@@ -15,8 +15,8 @@
  *   Finds first node for which function returns true when passed node as argument.
  */
 
-import { visit } from 'unist-util-visit'
-import iteratee from 'lodash.iteratee'
+var visit = require('unist-util-visit')
+var iteratee = require('lodash.iteratee')
 
 /**
  * Unist node finder utility.
@@ -29,7 +29,7 @@ import iteratee from 'lodash.iteratee'
  *   The first node that matches condition, or undefined if no node matches.
  * @type {<V extends Node>(tree: Node, condition: TestStr | TestObj | TestFn) => V | undefined}
  */
-function find (tree, condition) {
+module.exports = function find (tree, condition) {
   if (!tree) throw new Error('unist-util-find requires a tree to search')
   if (!condition) throw new Error('unist-util-find requires a condition')
 
@@ -45,5 +45,3 @@ function find (tree, condition) {
 
   return result
 }
-
-export default find

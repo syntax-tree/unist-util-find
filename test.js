@@ -1,6 +1,6 @@
-import test from 'tape'
-import { remark } from 'remark'
-import find from './index.js'
+var test = require('tape')
+var remark = require('remark')
+var find = require('./index.js')
 
 test('unist-find', function (t) {
   const tree = remark().parse('Some _emphasis_, **strongness**, and `code`.')

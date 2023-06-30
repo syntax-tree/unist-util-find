@@ -1,5 +1,5 @@
-import { remark } from 'remark'
-import find from './index.js'
+var remark = require('remark')
+var find = require('./index.js')
 
 remark()
   .use(function () {
