@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict'
 import test from 'tape'
 import {fromMarkdown} from 'mdast-util-from-markdown'
-import {find} from './index.js'
+import {find} from 'unist-util-find'
 
-test('unist-find', function (t) {
+test('find', function (t) {
   const tree = fromMarkdown('Some _emphasis_, **strongness**, and `code`.')
   assert(tree.type === 'root')
   const paragraph = tree.children[0]
