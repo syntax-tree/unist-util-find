@@ -197,14 +197,8 @@ This project is safe.
 
 ## Related
 
-*   [`unist-util-generated`](https://github.com/syntax-tree/unist-util-generated)
-    — check if a node is generated
-*   [`unist-util-position`](https://github.com/syntax-tree/unist-util-position)
-    — get positional info of nodes
-*   [`unist-util-remove-position`](https://github.com/syntax-tree/unist-util-remove-position)
-    — remove positional info from trees
-*   [`unist-util-source`](https://github.com/syntax-tree/unist-util-source)
-    — get the source of a value (node or position) in a file
+*   [`unist-util-visit`](https://github.com/syntax-tree/unist-util-visit)
+    — visit nodes
 
 ## Contribute
 
