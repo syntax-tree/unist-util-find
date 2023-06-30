@@ -16,7 +16,8 @@
     "build": "tsc --build --clean && tsc --build && type-coverage",
     "format": "prettier . -w --loglevel warn && xo --fix",
     "test-api": "node --conditions development test.js",
-    "test": "npm run build && npm run format && npm run test-api"
+    "test-coverage": "c8 --100 --reporter lcov npm run test-api",
+    "test": "npm run build && npm run format && npm run test-coverage"
   },
   "keywords": [
     "unist",
@@ -39,6 +40,7 @@
     "@types/lodash.iteratee": "^4.0.0",
     "@types/tape": "^5.0.0",
     "@types/unist": "^2.0.6",
+    "c8": "^8.0.0",
     "mdast-util-from-markdown": "^1.0.0",
     "prettier": "^2.0.0",
     "tape": "^5.0.0",
