@@ -11,10 +11,9 @@
   ],
   "sideEffects": false,
   "scripts": {
+    "prepack": "npm run build",
     "test": "standard && node test.js",
-    "build": "tsc",
-    "prepare": "npm run build",
-    "release": "release-it"
+    "build": "tsc"
   },
   "type": "commonjs",
   "keywords": [
@@ -33,7 +32,6 @@
   "devDependencies": {
     "@types/lodash.iteratee": "^4.7.7",
     "@types/unist": "^2.0.6",
-    "release-it": "^15.11.0",
     "remark": "^13.0.0",
     "standard": "^8.0.0",
     "tape": "^5.3.1",
