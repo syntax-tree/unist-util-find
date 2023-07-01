@@ -51,14 +51,14 @@ npm install unist-util-find
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import {find} from 'https://esm.sh/unist-util-find@1'
+import {find} from 'https://esm.sh/unist-util-find@2'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import {find} from 'https://esm.sh/unist-util-find@1?bundle'
+  import {find} from 'https://esm.sh/unist-util-find@2?bundle'
 </script>
 ```
 
@@ -189,7 +189,7 @@ versions of Node.js.
 When we cut a new major release, we drop support for unmaintained versions of
 Node.
 This means we try to keep the current release line,
-`unist-util-find@^1`, compatible with Node.js 12.
+`unist-util-find@^2`, compatible with Node.js 12.
 
 ## Security
 
