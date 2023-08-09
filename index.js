@@ -18,8 +18,8 @@
  *   Find the first node with a truthy property matching `string`.
  */
 
-import {visit} from 'unist-util-visit'
 import iteratee from 'lodash.iteratee'
+import {visit} from 'unist-util-visit'
 
 /**
  * Find a node in `tree` matching `condition`.
