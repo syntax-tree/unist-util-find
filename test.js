@@ -1,55 +1,51 @@
 import assert from 'node:assert/strict'
-import test from 'tape'
+import test from 'node:test'
 import {fromMarkdown} from 'mdast-util-from-markdown'
 import {find} from 'unist-util-find'
 
-test('find', function (t) {
+test('find', async function (t) {
   const tree = fromMarkdown('Some _emphasis_, **strongness**, and `code`.')
   assert(tree.type === 'root')
   const paragraph = tree.children[0]
   assert(paragraph.type === 'paragraph')
 
-  t.throws(function () {
-    // @ts-expect-error: check that an error is thrown at runtime.
-    find()
-  }, 'should fail without tree')
+  await t.test('should fail without tree', function () {
+    assert.throws(function () {
+      // @ts-expect-error: check that an error is thrown at runtime.
+      find()
+    })
+  })
 
-  t.throws(function () {
-    // @ts-expect-error: check that an error is thrown at runtime.
-    find(tree)
-  }, 'should fail without condition')
+  await t.test('should fail without condition', function () {
+    assert.throws(function () {
+      // @ts-expect-error: check that an error is thrown at runtime.
+      find(tree)
+    })
+  })
 
-  t.test('should find with string condition', function (st) {
+  await t.test('should find with string condition', function () {
     const result = find(tree, 'value')
 
-    st.equal(result, paragraph.children[0])
-
-    st.end()
+    assert.equal(result, paragraph.children[0])
   })
 
-  t.test('should find with object condition', function (st) {
+  await t.test('should find with object condition', function () {
     const result = find(tree, {type: 'emphasis'})
 
-    st.equal(result, paragraph.children[1])
-
-    st.end()
+    assert.equal(result, paragraph.children[1])
   })
 
-  t.test('should find with function condition', function (st) {
+  await t.test('should find with function condition', function () {
     const result = find(tree, function (node) {
       return node.type === 'inlineCode'
     })
 
-    st.equal(result, paragraph.children[5])
-
-    st.end()
+    assert.equal(result, paragraph.children[5])
   })
 
-  t.test('should return undefined if no matches', function (st) {
+  await t.test('should return undefined if no matches', function () {
     const result = find(tree, 'nope, nope, nope')
 
-    st.equal(result, undefined)
-
-    st.end()
+    assert.equal(result, undefined)
   })
 })
