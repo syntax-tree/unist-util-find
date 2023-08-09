@@ -51,14 +51,14 @@ npm install unist-util-find
 In Deno with [`esm.sh`][esmsh]:
 
 ```js
-import {find} from 'https://esm.sh/unist-util-find@2'
+import {find} from 'https://esm.sh/unist-util-find@3'
 ```
 
 In browsers with [`esm.sh`][esmsh]:
 
 ```html
 <script type="module">
-  import {find} from 'https://esm.sh/unist-util-find@2?bundle'
+  import {find} from 'https://esm.sh/unist-util-find@3?bundle'
 </script>
 ```
 

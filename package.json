@@ -1,6 +1,6 @@
 {
   "name": "unist-util-find",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "unist utility to find a node",
   "license": "MIT",
   "keywords": [
