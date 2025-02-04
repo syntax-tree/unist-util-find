@@ -212,7 +212,7 @@ abide by its terms.
 
 ## License
 
-[MIT][license] © [Richard Smith-Unna][author]
+[MIT][license] © Richard Smith-Unna
 
 <!-- Definition -->
 
@@ -245,8 +245,6 @@ abide by its terms.
 [npm]: https://docs.npmjs.com/cli/install
 
 [license]: license
-
-[author]: https://twitter.com/blahah404
 
 [esm]: https://gist.github.com/sindresorhus/a39789f98801d908bbc7ff3ecc99d99c
 
